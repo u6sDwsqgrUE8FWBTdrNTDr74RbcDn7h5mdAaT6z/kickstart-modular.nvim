@@ -39,4 +39,10 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+-- Relative search
+vim.opt.relativenumber = true
+
+-- Max 8 lines from top or bottom
+vim.opt.scrolloff = 8
+
 -- vim: ts=2 sts=2 sw=2 et

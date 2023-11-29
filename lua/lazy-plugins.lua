@@ -78,6 +78,14 @@ require('lazy').setup({
           end)
           return '<Ignore>'
         end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
+
+        -- Actions
+        vim.keymap.set('n', '<leader>hs', gs.stage_hunk, { desc  = 'Stage hunk' })
+        vim.keymap.set('n', '<leader>hr', gs.reset_hunk, { desc  = 'Reset hunk' })
+        vim.keymap.set('n', '<leader>hS', gs.stage_buffer, { desc  = 'Stage buffer' })
+        vim.keymap.set('n', '<leader>hu', gs.undo_stage_hunk, { desc  = 'Undo stage hunk' })
+        vim.keymap.set('n', '<leader>hR', gs.reset_buffer, { desc  = 'Reset buffer' })
+        vim.keymap.set('n', '<leader>hd', gs.diffthis, { desc  = 'Diff this' })
       end,
     },
   },

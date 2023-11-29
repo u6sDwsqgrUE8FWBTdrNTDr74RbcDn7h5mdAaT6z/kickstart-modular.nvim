@@ -92,10 +92,10 @@ require('lazy').setup({
 
   {
     -- Theme inspired by Atom
-    'Mofiqul/vscode.nvim',
+    'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'vscode'
+      vim.cmd.colorscheme 'onedark'
     end,
   },
 
@@ -106,7 +106,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'vscode',
+        theme = 'onedark',
         component_separators = '|',
         section_separators = '',
       },

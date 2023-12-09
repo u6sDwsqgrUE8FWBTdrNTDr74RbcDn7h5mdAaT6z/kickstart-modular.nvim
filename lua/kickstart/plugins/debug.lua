@@ -20,6 +20,9 @@ return {
 
     -- Add your own debuggers here
     'mfussenegger/nvim-dap-python',
+
+    -- Virtual text support
+    'theHamsta/nvim-dap-virtual-text'
   },
   config = function()
     local dap = require 'dap'
@@ -82,5 +85,8 @@ return {
 
     -- Install python specific config
     require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+
+    -- DAP virtual text setup
+    require("nvim-dap-virtual-text").setup {}
   end,
 }

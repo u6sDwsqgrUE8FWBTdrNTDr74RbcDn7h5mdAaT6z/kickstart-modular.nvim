@@ -86,6 +86,36 @@ return {
     -- Install python specific config
     require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 
+    -- CodeLLDB
+    dap.adapters.codelldb = {
+      type = 'server',
+      port = "${port}",
+      executable = {
+        command = vim.fn.expand('~/.local/share/nvim/mason/bin/codelldb'),
+        args = {"--port", "${port}"},
+
+        -- On windows you may have to uncomment this:
+        -- detached = false,
+      }
+    }
+
+    dap.configurations.cpp = {
+      {
+        name = "Launch file",
+        type = "codelldb",
+        request = "launch",
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+      },
+    }
+
+    dap.configurations.c = dap.configurations.cpp
+    dap.configurations.h = dap.configurations.cpp
+    dap.configurations.rust = dap.configurations.cpp
+
     -- DAP virtual text setup
     require("nvim-dap-virtual-text").setup {}
   end,

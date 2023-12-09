@@ -25,6 +25,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- Choose changes
+vim.keymap.set('n', '<leader>gh', '<cmd>diffget //2<CR>', { desc = 'Get left changes' })
+vim.keymap.set('n', '<leader>gl', '<cmd>diffget //3<CR>', { desc = 'Get right changes' })
+
 -- Toggle filetree
 vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
 

@@ -22,7 +22,13 @@ return {
     'mfussenegger/nvim-dap-python',
 
     -- Virtual text support
-    'theHamsta/nvim-dap-virtual-text'
+    'theHamsta/nvim-dap-virtual-text',
+
+    -- REPL syntax highlighting
+    'LiadOz/nvim-dap-repl-highlights',
+
+    -- Completions for DAP and REPL
+    'rcarriga/cmp-dap'
   },
   config = function()
     local dap = require 'dap'
@@ -118,5 +124,22 @@ return {
 
     -- DAP virtual text setup
     require("nvim-dap-virtual-text").setup {}
+
+    -- DAP REPL syntax highlighting
+    require('nvim-dap-repl-highlights').setup {}
+
+    -- DAP and REPL completions
+    require("cmp").setup({
+      enabled = function()
+        return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+            or require("cmp_dap").is_dap_buffer()
+      end
+    })
+
+    require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+      sources = {
+        { name = "dap" },
+      },
+    })
   end,
 }

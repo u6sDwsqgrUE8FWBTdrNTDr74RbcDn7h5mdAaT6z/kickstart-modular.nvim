@@ -5,11 +5,12 @@ return {
     event = 'VeryLazy',
 
     opts = function()
-      local colors = require('vscode.colors').get_colors()
-      vim.api.nvim_set_hl(0, 'MyBufferSelected', { fg = colors.base01, bg = colors.base09 })
-      vim.api.nvim_set_hl(0, 'MyHarpoonSelected', { fg = colors.base01, bg = colors.base0B })
+      -- local colors = require('vscode.colors').get_colors()
+      -- vim.api.nvim_set_hl(0, 'MyBufferSelected', { fg = colors.vscSelection, bg = colors.base09 })
+      -- vim.api.nvim_set_hl(0, 'MyHarpoonSelected', { fg = colors.vscSelection, bg = colors.base0B })
       return {
         options = {
+          mode = "tabs",
           custom_areas = {
             left = function()
               local result = {}
@@ -23,15 +24,15 @@ return {
                   -- table.insert(result, { text = '│', link = 'BufferLineIndicatorSelected' })
                   table.insert(result, { text = name, link = 'MyHarpoonSelected' })
                   -- table.insert(result, { text = activename, link = 'BufferLineBufferVisible' })
-                  -- table.insert(result, { text = '│', link = 'BufferLineIndicatorSelected' })
+                  table.insert(result, { text = '│', link = 'BufferLineIndicatorSelected' })
                 else
                   -- print('inactive: ' .. name)
                   table.insert(result, { text = name, link = 'BufferLineBufferVisible' })
                 end
               end
-              if #items ~= 0 then
-                table.insert(result, { text = ' ║', link = 'BufferLineWarningSelected' })
-              end
+              -- if #items ~= 0 then
+              --   table.insert(result, { text = ' ', link = 'BufferLineWarningSelected' })
+              -- end
               return result
             end
           },

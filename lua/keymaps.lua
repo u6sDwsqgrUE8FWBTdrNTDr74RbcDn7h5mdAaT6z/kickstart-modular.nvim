@@ -29,11 +29,27 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- Paste without overwritting register
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
+-- Replace
+vim.keymap.set("n", "<leader>rs", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Quickfix navigation
+vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz")
+
+-- Tabs
+vim.keymap.set('n', '<leader><tab>', '<cmd>tabnew<CR>')
+
 -- Choose changes
 vim.keymap.set('n', '<leader>gh', '<cmd>diffget //2<CR>', { desc = 'Get left changes' })
 vim.keymap.set('n', '<leader>gl', '<cmd>diffget //3<CR>', { desc = 'Get right changes' })
 
 -- Toggle filetree
 vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
+
+-- tmux-sessionizer
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -47,9 +47,6 @@ require('lazy').setup({
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
-
-      -- Adds LSP signature help
-      'hrsh7th/cmp-nvim-lsp-signature-help',
     },
   },
 

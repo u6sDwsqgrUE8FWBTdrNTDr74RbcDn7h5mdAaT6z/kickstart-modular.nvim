@@ -41,6 +41,10 @@ vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz")
 
 -- Tabs
 vim.keymap.set('n', '<leader><tab>', '<cmd>tabnew<CR>')
+vim.keymap.set('n', '<tab>', '<cmd>tabnext<CR>')
+vim.keymap.set('n', '<S-tab>', '<cmd>tabprev<CR>')
+vim.keymap.set('n', '<A-PageUp>', '<cmd>-tabmove<CR>')
+vim.keymap.set('n', '<A-PageDown>', '<cmd>+tabmove<CR>')
 
 -- Choose changes
 vim.keymap.set('n', '<leader>gh', '<cmd>diffget //2<CR>', { desc = 'Get left changes' })

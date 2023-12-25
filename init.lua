@@ -54,6 +54,9 @@ require 'lazy-plugins'
 require 'options'
 
 -- [[ Basic Keymaps ]]
+require 'autocmds'
+
+-- [[ Basic Keymaps ]]
 require 'keymaps'
 
 -- [[ Configure Telescope ]]

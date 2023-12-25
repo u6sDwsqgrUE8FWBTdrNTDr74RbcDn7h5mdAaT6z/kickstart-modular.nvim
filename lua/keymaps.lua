@@ -28,6 +28,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+-- Indent in visual mode without exiting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
 -- Paste without overwritting register
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -36,15 +39,15 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set("n", "<leader>rs", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Quickfix navigation
-vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
+vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 
 -- Tabs
-vim.keymap.set('n', '<leader><tab>', '<cmd>tabnew<CR>')
-vim.keymap.set('n', '<tab>', '<cmd>tabnext<CR>')
-vim.keymap.set('n', '<S-tab>', '<cmd>tabprev<CR>')
-vim.keymap.set('n', '<A-PageUp>', '<cmd>-tabmove<CR>')
-vim.keymap.set('n', '<A-PageDown>', '<cmd>+tabmove<CR>')
+vim.keymap.set('n', '<leader><tab>', '<cmd>tabnew<CR>', { desc = "New tab" })
+vim.keymap.set('n', '<tab>', '<cmd>tabnext<CR>', { desc = "Next tab" })
+vim.keymap.set('n', '<S-tab>', '<cmd>tabprev<CR>', { desc = "Previous tab" })
+vim.keymap.set('n', '<A-PageUp>', '<cmd>-tabmove<CR>', { desc = "Move tab left" })
+vim.keymap.set('n', '<A-PageDown>', '<cmd>+tabmove<CR>', { desc = "Move tab right" })
 
 -- Choose changes
 vim.keymap.set('n', '<leader>gh', '<cmd>diffget //2<CR>', { desc = 'Get left changes' })

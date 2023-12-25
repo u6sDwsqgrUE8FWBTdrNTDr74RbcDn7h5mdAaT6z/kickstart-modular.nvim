@@ -16,6 +16,9 @@ vim.o.mouse = 'a'
 --  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
 
+-- Insert indents automatically
+vim.o.smartindent = true
+
 -- Enable break indent
 vim.o.breakindent = true
 

@@ -20,6 +20,12 @@ return {
 
     -- Add your own debuggers here
     'mfussenegger/nvim-dap-python',
+    "mxsdev/nvim-dap-vscode-js",
+    {
+      "microsoft/vscode-js-debug",
+      version = "1.x",
+      build = "npm i && npm run compile vsDebugServerBundle && mv dist out",
+    },
 
     -- Virtual text support
     'theHamsta/nvim-dap-virtual-text',
@@ -121,6 +127,31 @@ return {
     dap.configurations.c = dap.configurations.cpp
     dap.configurations.h = dap.configurations.cpp
     dap.configurations.rust = dap.configurations.cpp
+
+    -- JS
+    require("dap-vscode-js").setup({
+      debugger_path = vim.fn.stdpath('data') .. "/lazy/vscode-js-debug", -- Path to vscode-js-debug installation.
+      adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
+    })
+
+    for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "javascriptreact" }) do
+      dap.configurations[language] = {
+        {
+          type = "pwa-node",
+          request = "launch",
+          name = "Launch file",
+          program = "${file}",
+          cwd = "${workspaceFolder}",
+        },
+        {
+          type = "pwa-node",
+          request = "attach",
+          name = "Attach",
+          processId = require("dap.utils").pick_process,
+          cwd = "${workspaceFolder}",
+        },
+      }
+    end
 
     -- DAP virtual text setup
     require("nvim-dap-virtual-text").setup {}

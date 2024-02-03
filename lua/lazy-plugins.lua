@@ -136,10 +136,11 @@ require('lazy').setup({
 
   {
     -- Colorscheme
-    'Mofiqul/vscode.nvim',
+    'folke/tokyonight.nvim',
+    lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'vscode'
+      vim.cmd.colorscheme 'tokyonight-night'
     end,
   },
 
@@ -150,7 +151,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'vscode',
+        theme = 'auto',
         component_separators = '|',
         section_separators = '',
       },

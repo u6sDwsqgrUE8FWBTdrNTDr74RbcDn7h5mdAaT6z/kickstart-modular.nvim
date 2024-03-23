@@ -147,6 +147,25 @@ return {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
+        clangd = {},
+        gopls = {},
+        pyright = {
+          python = {
+            analysis = { diagnosticMode = 'workspace' },
+          },
+        },
+        tsserver = {},
+        html = { filetypes = { 'html', 'twig', 'hbs' } },
+        cssls = {},
+        jsonls = {},
+        jqls = {},
+        eslint = {},
+        bashls = {},
+        cmake = {},
+        autotools_ls = {},
+        marksman = {},
+        ltex = {},
+        sqls = {},
 
         lua_ls = {
           -- cmd = {...},

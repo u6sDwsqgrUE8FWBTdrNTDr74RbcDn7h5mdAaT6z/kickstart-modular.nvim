@@ -65,6 +65,4 @@ vim.opt.relativenumber = true
 -- Max 8 lines from top or bottom
 vim.opt.scrolloff = 8
 
-vim.opt.statuscolumn = [[%!v:lua.require'ui'.statuscolumn()]]
-
 -- vim: ts=2 sts=2 sw=2 et
